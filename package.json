@@ -1,0 +1,10 @@
+{
+  "name": "typescript",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@types/devextreme": "^16.2.1",
+    "@types/jquery": "^3.5.14",
+    "devextreme/jquery": "*"
+  }
+}
