@@ -65,8 +65,34 @@ where users.age > 25
 order by name` as any[];
 
 $(() => {
-  $('#app').dxDataGrid({
-    dataSource: dados,
-    showBorders: true,
+  const dataGrid = $('#app')
+    .dxDataGrid({
+      dataSource: dados,
+      showBorders: true,
+    })
+    .dxDataGrid('instance');
+
+  const input = $('#input')
+    .dxTextArea({
+      height: 300,
+      text: `select name
+    , id
+    , age
+  from
+    users
+  where users.age > 25
+        && users.age < 32
+  order by name`,
+    })
+    .dxTextArea('instance');
+
+  $('#executar').dxButton({
+    text: 'executar',
+    type: 'success',
+    width: 120,
+    onClick() {
+      dados = sql(input.option('text'));
+      dataGrid.option('dataSource', dados);
+    },
   });
 });
